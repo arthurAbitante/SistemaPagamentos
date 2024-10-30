@@ -1,0 +1,23 @@
+curl -X POST -d "cnpj=Textp&razaoSocial=textp&email=texto" http://localhost:3000/clientes
+
+
+
+atualizar
+
+$ curl -X PUT -d "userId=1&title=titulo da tarefa&completed=true" https://jsonplaceholder.typicode.com/todos/5 
+
+
+remover 
+
+
+$ curl -X DELETE https://jsonplaceholder.typicode.com/todos/5 
+
+
+pegar todos
+
+$ curl https://jsonplaceholder.typicode.com/todos
+
+
+pegar id
+
+$ curl https://jsonplaceholder.typicode.com/todos
