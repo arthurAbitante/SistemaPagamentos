@@ -10,7 +10,7 @@ function CondicoesPagamento() {
     }, []);
 
     const fetchCondicoes = async () => {
-        const response = await axios.get('/api/condicoespagamentos');
+        const response = await axios.get('/condicoespagamentos');
         setCondicoes(response.data);
     };
 
@@ -20,13 +20,13 @@ function CondicoesPagamento() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('/api/condicoespagamentos', formData);
+        await axios.post('/condicoespagamentos', formData);
         fetchCondicoes();
         setFormData({ descricao: '', dias: '' });
     };
 
     const handleDelete = async (id) => {
-        await axios.delete(`/api/condicoespagamentos/${id}`);
+        await axios.delete(`/condicoespagamentos/${id}`);
         fetchCondicoes();
     };
 
@@ -52,3 +52,5 @@ function CondicoesPagamento() {
 }
 
 export default CondicoesPagamento;
+
+//export { default as CondicoesPagamento } from './CondicoesPagamento';

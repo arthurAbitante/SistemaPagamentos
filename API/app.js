@@ -2,13 +2,16 @@ const express = require('express');
 const app = express();
 const sequelize = require('./config/config');
 
-const Cliente = require('./models/Cliente');
-const CondicoesPagamento = require('./models/CondicoesPagamento');
+const cors = require('cors');
+app.use(cors());
+
+const Cliente = require('./routes/clientes'); 
+const CondicoesPagamento = require('./routes/condicoespagamento');
 
 app.use(express.json());
 
-app.use('/clientes', require('./routes/clientes'));
-app.use('/condicoespagamentos', require('./routes/condicoespagamento'));
+app.use('/clientes', Cliente);
+app.use('/condicoespagamentos', CondicoesPagamento);
 app.use('/historicoprecos', require('./routes/historicopreco'));
 app.use('/relatoriopagamentos', require('./routes/relatoriopagamento'));
 app.use('/produtos', require('./routes/produtos'));

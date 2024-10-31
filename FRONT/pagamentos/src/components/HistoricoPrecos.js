@@ -45,14 +45,36 @@ function HistoricoPrecos(){
     
     
     return(
-    <select name="ProdutoId" value={formData.ProdutoId} onChange={handleChange}>
-        <option value="">Select Produto</option>
-        {produtos.map(produto => (
-            <option key={produto.Id} value={produto.Id}>{produto.Descricao}</option>
-        ))}
-    </select>
+
+    <div>        
+        <h2>Histórico</h2>
+            <form onSubmit={handleSubmit}>
+                <input type="text" name="preco" placeholder="Preço" value={formData.preco} onChange={handleChange} />
+        
+
+                <select name="ProdutoId" value={formData.ProdutoId} onChange={handleChange}>
+                    <option value="">Selecionar Produto</option>
+                    {produtos.map(produto => (
+                        <option key={produto.Id} value={produto.Id}>{produto.Descricao}</option>
+                    ))}
+                </select>
+
+                <button type="submit">Adicionar Histórico</button>
+            </form>
+        
+            <ul>
+                {historicoPrecos.map(historicoPreco => (
+                    <li key={historicoPreco.historicoprecoId}>
+                        {historicoPreco.preco}
+                        <button onClick={() => handleDelete(historicoPreco.historicoprecoId)}>Remover</button>
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 
-
-
 }
+
+export default HistoricoPrecos;
+
+//export { default as HistoricoPrecos } from './';

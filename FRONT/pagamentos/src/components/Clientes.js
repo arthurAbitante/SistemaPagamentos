@@ -11,7 +11,7 @@ function Clientes() {
     }, []);
 
     const fetchClientes = async () => {
-        const response = await axios.get('/api/clientes');
+        const response = await axios.get('http://localhost:3000/clientes');
         setClientes(response.data);
     };
 
@@ -21,13 +21,13 @@ function Clientes() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('/api/clientes', formData);
+        await axios.post('http://localhost:3000/clientes', formData);
         fetchClientes();
         setFormData({ cnpj: '', razaoSocial: '', email: '' });
     };
 
     const handleDelete = async (id) => {
-        await axios.delete(`/api/clientes/${id}`);
+        await axios.delete(`http://localhost:3000/clientes/${id}`);
         fetchClientes();
     };
 
@@ -41,16 +41,43 @@ function Clientes() {
                 <button type="submit">Add Cliente</button>
             </form>
             
+            {/*
             <ul>
                 {clientes.map(cliente => (
                     <li key={cliente.clienteId}>
-                        {cliente.razaoSocial} - {cliente.email}
+                       {cliente.cnpj} - {cliente.razaoSocial} - {cliente.email}
                         <button onClick={() => handleDelete(cliente.clienteId)}>Delete</button>
                     </li>
                 ))}
             </ul>
+*/}
+            <table>
+                <thead>
+                    <tr>
+                        <th>CNPJ</th>
+                        <th>Razão Social</th>
+                        <th>Email</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {clientes.map((cliente) => (
+                        <tr>
+                            <td>{cliente.cnpj}</td>
+                            <td>{cliente.razaoSocial}</td>
+                            <td>{cliente.email}</td>
+                            <td><button onClick={() => handleDelete(cliente.clienteId)}>Delete</button></td>
+                        </tr>
+                    ))}
+                </tbody>
+
+            </table>
+            
         </div>
     );
 }
 
 export default Clientes;
+
+//export { default as Clientes } from './Clientes';
