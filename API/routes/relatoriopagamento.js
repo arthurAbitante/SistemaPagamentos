@@ -1,10 +1,43 @@
 const express = require('express');
 const router = express.Router();
 const RelatorioPagamento = require('../models/RelatorioPagamento');
+const CondicoesPagamento = require('../models/CondicoesPagamento');
+const Cliente = require('../models/Cliente');
+const HistoricoPreco = require('../models/HistoricoPreco');
+const Produto = require('../models/Produto');
+
 
 router.get('/', async (req, res) => {
     try {
-        const relatoriopagamento = await RelatorioPagamento.findAll();
+        const relatoriopagamento = await RelatorioPagamento.findAll({
+            attributes: ['id'],
+            include: [
+                {
+                    model: Cliente,
+                    attributes: ['razaoSocial'],
+                    as: 'cliente'
+                },
+                {
+                    model: CondicoesPagamento,
+                    attributes: ['descricao'],
+                    as: 'condicaoPagamento'
+                },
+                {
+                    model: HistoricoPreco,
+                    attributes: ['preco'],
+                    include: [
+                        {
+                            model: Produto,
+                            attributes: ['Descricao'],
+                            as: 'produto'
+                        }
+                    ],
+                    as: 'historicoPreco'
+                }
+            ],
+        });
+
+
         res.json(relatoriopagamento);
     } catch (error) {
         res.status(500).json({ error: error.message });

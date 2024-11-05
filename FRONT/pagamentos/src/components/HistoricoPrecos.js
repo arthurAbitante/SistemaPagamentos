@@ -7,23 +7,23 @@ function HistoricoPrecos(){
 
     const [historicoPrecos, setHistoricoPrecos] = useState([]);
     const [produtos, setProdutos] = useState([]);
-    const [formData, setFormData] = useState({ preco: '' });
+    const [formData, setFormData] = useState({ preco: '', ProdutoId: '' });
 
 //pegar os atributos de produtos
     useEffect(() => {
-        axios.get('/produtos').then((response) => {
+        axios.get('http://localhost:3000/produtos').then((response) => {
             setProdutos(response.data);
         });
     }, []);
     
-
+   // alert(produtos);
     //pegar os atributos de HistoricoPrecos
     useEffect(() => {
         fetchHistoricoPrecos();
     }, []);
 
     const fetchHistoricoPrecos = async () => {
-        const response = await axios.get('/historicoprecos');
+        const response = await axios.get('http://localhost:3000/historicoprecos');
         setHistoricoPrecos(response.data);
     };
 
@@ -33,13 +33,13 @@ function HistoricoPrecos(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('/historicoprecos', formData);
+        await axios.post('http://localhost:3000/historicoprecos', formData);
         fetchHistoricoPrecos();
         setFormData({ preco: '' });
     };
 
     const handleDelete = async (id) => {
-        await axios.delete(`/historicoprecos/${id}`);
+        await axios.delete(`http://localhost:3000/historicoprecos/${id}`);
         fetchHistoricoPrecos();
     };
     

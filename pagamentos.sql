@@ -23,7 +23,7 @@ CREATE TABLE `produtos` (
 
 CREATE TABLE `historicoprecos` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `ProdutoId` int DEFAULT NULL,
+  `produtoId` int DEFAULT NULL,
   `preco` double NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IX_HistoricoPrecos_ProdutoId` (`ProdutoId`),
@@ -33,7 +33,7 @@ CREATE TABLE `historicoprecos` (
 
 CREATE TABLE `relatoriopagamentos` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `HistoricoPrecoid` int DEFAULT NULL,
+  `historicoPrecoid` int DEFAULT NULL,
   `condicaoPagamentoId` int DEFAULT NULL,
   `clienteId` int DEFAULT NULL,
   PRIMARY KEY (`id`),

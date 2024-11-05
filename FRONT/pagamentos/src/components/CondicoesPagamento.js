@@ -10,7 +10,7 @@ function CondicoesPagamento() {
     }, []);
 
     const fetchCondicoes = async () => {
-        const response = await axios.get('/condicoespagamentos');
+        const response = await axios.get('http://localhost:3000/condicoespagamentos');
         setCondicoes(response.data);
     };
 
@@ -20,13 +20,13 @@ function CondicoesPagamento() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios.post('/condicoespagamentos', formData);
+        await axios.post('http://localhost:3000/condicoespagamentos', formData);
         fetchCondicoes();
         setFormData({ descricao: '', dias: '' });
     };
 
     const handleDelete = async (id) => {
-        await axios.delete(`/condicoespagamentos/${id}`);
+        await axios.delete(`http://localhost:3000/condicoespagamentos/${id}`);
         fetchCondicoes();
     };
 
@@ -40,6 +40,7 @@ function CondicoesPagamento() {
             </form>
             
             <ul>
+                {/* Transformar em tabela*/}
                 {condicoes.map(condicao => (
                     <li key={condicao.condicaoPagamentoId}>
                         {condicao.descricao} - {condicao.dias}

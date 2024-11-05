@@ -3,7 +3,9 @@ import './App.css';
 
 import Clientes from './components/Clientes';
 import CondicoesPagamento from './components/CondicoesPagamento';
+import Produtos from './components/Produtos';
 import HistoricoPrecos from './components/HistoricoPrecos';
+import RelatorioPagamentos from './components/RelatorioPagamentos';
 
 
 function App() {
@@ -11,9 +13,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Clientes />
-       {/* <CondicoesPagamento /> */}
-        {/* <HistoricoPrecos /> */}
+        <CondicoesPagamento /> 
+        <Produtos />
+        <HistoricoPrecos />
 
+        <RelatorioPagamentos />
       </header>
     </div>
   );

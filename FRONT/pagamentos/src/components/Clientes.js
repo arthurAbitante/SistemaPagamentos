@@ -41,16 +41,6 @@ function Clientes() {
                 <button type="submit">Add Cliente</button>
             </form>
             
-            {/*
-            <ul>
-                {clientes.map(cliente => (
-                    <li key={cliente.clienteId}>
-                       {cliente.cnpj} - {cliente.razaoSocial} - {cliente.email}
-                        <button onClick={() => handleDelete(cliente.clienteId)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
-*/}
             <table>
                 <thead>
                     <tr>
