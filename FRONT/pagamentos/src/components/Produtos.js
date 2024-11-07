@@ -32,7 +32,7 @@ function Produtos() {
     };
 
     return (
-        <div>
+        <div className="component-container">
             <h2>Produtos</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="Sku" placeholder="Sku" value={formData.Sku} onChange={handleChange} />
@@ -40,7 +40,7 @@ function Produtos() {
                 <button type="submit">Adicionar Produto</button>
             </form>
             
-            <table>
+            <table className="component-table">
                 <thead>
                     <tr>
                         <th>Sku</th>

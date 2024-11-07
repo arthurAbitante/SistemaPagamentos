@@ -13,8 +13,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Clientes />
+        
         <CondicoesPagamento /> 
+
         <Produtos />
+
         <HistoricoPrecos />
 
         <RelatorioPagamentos />

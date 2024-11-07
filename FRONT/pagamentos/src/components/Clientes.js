@@ -32,7 +32,7 @@ function Clientes() {
     };
 
     return (
-        <div>
+        <div className="component-container">
             <h2>Clientes</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="cnpj" placeholder="CNPJ" value={formData.cnpj} onChange={handleChange} />
@@ -41,7 +41,7 @@ function Clientes() {
                 <button type="submit">Add Cliente</button>
             </form>
             
-            <table>
+            <table className="component-table">
                 <thead>
                     <tr>
                         <th>CNPJ</th>

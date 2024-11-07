@@ -46,7 +46,7 @@ function HistoricoPrecos(){
     
     return(
 
-    <div>        
+    <div className="component-container">        
         <h2>Histórico</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="preco" placeholder="Preço" value={formData.preco} onChange={handleChange} />
@@ -61,15 +61,28 @@ function HistoricoPrecos(){
 
                 <button type="submit">Adicionar Histórico</button>
             </form>
-        
-            <ul>
-                {historicoPrecos.map(historicoPreco => (
-                    <li key={historicoPreco.historicoprecoId}>
-                        {historicoPreco.preco}
-                        <button onClick={() => handleDelete(historicoPreco.historicoprecoId)}>Remover</button>
-                    </li>
-                ))}
-            </ul>
+            
+            <table className="component-table">
+                <thead>
+                    <tr>
+                        <th>Preço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {historicoPrecos.map(historicoPreco => (
+
+                    <tr>
+                        <td>
+                            {historicoPreco.preco}
+                        </td>
+                        <td>
+                            <button onClick={() => handleDelete(historicoPreco.historicoprecoId)}>Remover</button>
+                        </td>
+                    </tr>
+                    ))}
+
+                </tbody>
+            </table>
         </div>
     );
 

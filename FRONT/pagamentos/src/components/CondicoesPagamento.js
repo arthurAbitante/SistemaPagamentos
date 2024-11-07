@@ -31,7 +31,7 @@ function CondicoesPagamento() {
     };
 
     return (
-        <div>
+        <div className="component-container">
             <h2>Condições de Pagamento</h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" name="descricao" placeholder="Descrição" value={formData.descricao} onChange={handleChange} />
@@ -39,15 +39,27 @@ function CondicoesPagamento() {
                 <button type="submit">Add Condição</button>
             </form>
             
-            <ul>
-                {/* Transformar em tabela*/}
-                {condicoes.map(condicao => (
-                    <li key={condicao.condicaoPagamentoId}>
-                        {condicao.descricao} - {condicao.dias}
-                        <button onClick={() => handleDelete(condicao.condicaoPagamentoId)}>Delete</button>
-                    </li>
-                ))}
-            </ul>
+            <table className="component-table">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Dias</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {condicoes.map(condicao => (
+                    <tr>
+                        <td>{condicao.descricao}</td>
+                        <td>{condicao.dias}</td>
+                        <td>
+                            <button onClick={() => handleDelete(condicao.condicaoPagamentoId)}>Remover</button>
+                        </td>
+                    </tr>
+                    ))}
+
+                </tbody>
+            </table>
+
         </div>
     );
 }

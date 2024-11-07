@@ -73,7 +73,7 @@ function RelatorioPagamentos(){
     
     return(
 
-    <div>        
+    <div className="component-container">        
         <h2>Relatório Pagamentos</h2>
 
         <form onSubmit={handleSubmit}>
@@ -100,7 +100,7 @@ function RelatorioPagamentos(){
             </select>
         </form>
 
-        <table>
+        <table className="component-table">
             <thead>
                 <tr>
                     <th>ID</th>
